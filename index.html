@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones Cloud - Transformación Digital para Empresas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2A5BD7;
+            --secondary-color: #6B46C1;
+            --accent-color: #00C9FF;
+            --dark-color: #1A202C;
+            --light-color: #F7FAFC;
+            --text-color: #4A5568;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(42, 91, 215, 0.1), rgba(107, 70, 193, 0.1)), url('https://picsum.photos/seed/cloudtech/1920/1080.jpg') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-text .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-text .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(42, 91, 215, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--accent-color);
+            opacity: 0.7;
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 25%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .section-title p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(42, 91, 215, 0.1), rgba(107, 70, 193, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-icon i {
+            font-size: 1.6rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .service-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Why Cloud Section */
+        .why-cloud {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .why-cloud-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .why-cloud-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        .why-cloud-text p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+
+        .benefits-list i {
+            color: var(--accent-color);
+            margin-right: 1rem;
+            margin-top: 3px;
+            font-size: 0.9rem;
+        }
+
+        .benefits-list div h4 {
+            margin-bottom: 0.3rem;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .benefits-list div p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .why-cloud-image {
+            position: relative;
+        }
+
+        .why-cloud-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-overlay {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: white;
+            border-radius: 15px;
+            padding: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            min-width: 180px;
+        }
+
+        .stats-overlay h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .stats-overlay p {
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        /* Case Study Section */
+        .case-study {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .case-study-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .case-study-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.8rem;
+            text-align: center;
+        }
+
+        .case-study-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .case-before, .case-after {
+            padding: 1.8rem;
+        }
+
+        .case-before {
+            background: #F5F5F5;
+            border-right: 1px solid #E0E0E0;
+        }
+
+        .case-after {
+            background: white;
+        }
+
+        .case-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .case-title i {
+            font-size: 1.3rem;
+            margin-right: 0.8rem;
+        }
+
+        .case-before .case-title {
+            color: #E53E3E;
+        }
+
+        .case-after .case-title {
+            color: #38A169;
+        }
+
+        .case-details ul {
+            list-style: none;
+        }
+
+        .case-details li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .case-details li i {
+            margin-right: 0.8rem;
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        .case-before .case-details li i {
+            color: #E53E3E;
+        }
+
+        .case-after .case-details li i {
+            color: #38A169;
+        }
+
+        /* Key Benefits Section */
+        .key-benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 1.8rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(42, 91, 215, 0.05), rgba(107, 70, 193, 0.05));
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.2rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .benefit-item p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(10deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content,
+            .why-cloud-content,
+            .case-study-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                margin-top: 2rem;
+            }
+
+            .stats-overlay {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .why-cloud-text h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-cloud"></i>
+                    Soluciones Cloud
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#por-que-nube">Por qué la nube</a></li>
+                    <li><a href="#casos-exito">Casos de éxito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transforma tu negocio con el poder de la nube</h1>
+                    <p>La nube no es solo almacenamiento... es evolución digital. Es pasar de USB a teletransportación de datos para tu empresa.</p>
+                    <p style="font-style: italic; color: var(--primary-color);">"Si tu servidor físico aún suena como avión despegando... es hora de subir a las nubes (las digitales)."</p>
+                    <a href="#servicios" class="cta-button">Descubrir servicios</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/cloudtechnology/600/400.jpg" alt="Soluciones Cloud">
+                    <div class="floating-icons">
+                        <i class="fas fa-server floating-icon"></i>
+                        <i class="fas fa-database floating-icon"></i>
+                        <i class="fas fa-shield-alt floating-icon"></i>
+                        <i class="fas fa-rocket floating-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Servicios Cloud</h2>
+                <p>Impulsa la transformación digital de tu empresa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Migración completa a la nube</h3>
+                    <p>Transfiere toda tu infraestructura a plataformas líderes con mínima interrupción y máxima seguridad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Optimización de infraestructura</h3>
+                    <p>Maximiza el rendimiento y reduce costos mediante la optimización de recursos existentes en la nube.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Automatización y escalabilidad</h3>
+                    <p>Implementa soluciones que se adaptan automáticamente a la demanda de tu negocio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Modernización de sistemas</h3>
+                    <p>Actualiza tus aplicaciones a arquitecturas modernas para mayor agilidad y rendimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Cloud Section -->
+    <section id="por-que-nube" class="why-cloud">
+        <div class="container">
+            <div class="why-cloud-content">
+                <div class="why-cloud-text">
+                    <h2>Por qué elegir la nube</h2>
+                    <p>La transformación digital ya no es una opción, es una necesidad. La nube ofrece ventajas competitivas que marcan la diferencia.</p>
+                    <ul class="benefits-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Reducción de costos</h4>
+                                <p>Paga solo por lo que usas, elimina inversiones en hardware.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Seguridad avanzada</h4>
+                                <p>Protección de nivel empresarial con cifrado y monitoreo constante.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Escalabilidad flexible</h4>
+                                <p>Aumenta o reduce recursos según la demanda sin interrupciones.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Continuidad del negocio</h4>
+                                <p>Recuperación ante desastres y copias de seguridad automáticas.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Acceso remoto</h4>
+                                <p>Trabaja desde cualquier lugar con conexión a internet.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="why-cloud-image">
+                    <img src="https://picsum.photos/seed/cloudbenefits/600/500.jpg" alt="Beneficios de la nube">
+                    <div class="stats-overlay">
+                        <h3>94%</h3>
+                        <p>de empresas mejoran su seguridad tras migrar a la nube</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section id="casos-exito" class="case-study">
+        <div class="container">
+            <div class="section-title">
+                <h2>Casos de éxito</h2>
+                <p>Transformación digital de negocios reales</p>
+            </div>
+            <div class="case-study-container">
+                <div class="case-study-header">
+                    <h2>Antes vs. Después: Empresa de Retail</h2>
+                    <p>Transformación completa de cadena de tiendas minorista</p>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-before">
+                        <div class="case-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Antes de la nube</h3>
+                        </div>
+                        <div class="case-details">
+                            <ul>
+                                <li><i class="fas fa-times"></i> Servidores locales con costos elevados</li>
+                                <li><i class="fas fa-times"></i> Tiempos de inactividad mensuales de hasta 8 horas</li>
+                                <li><i class="fas fa-times"></i> Procesos manuales de backup con riesgo de pérdida</li>
+                                <li><i class="fas fa-times"></i> Imposibilidad de escalar en temporadas altas</li>
+                                <li><i class="fas fa-times"></i> Acceso limitado para equipos remotos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="case-after">
+                        <div class="case-title">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Después de la nube</h3>
+                        </div>
+                        <div class="case-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Reducción del 60% en costos de infraestructura</li>
+                                <li><i class="fas fa-check"></i> Disponibilidad del 99.9% con tiempo mínimo de inactividad</li>
+                                <li><i class="fas fa-check"></i> Backups automáticos y recuperación instantánea</li>
+                                <li><i class="fas fa-check"></i> Escalabilidad automática que aumenta recursos un 300%</li>
+                                <li><i class="fas fa-check"></i> Acceso seguro desde cualquier dispositivo y ubicación</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits Section -->
+    <section class="key-benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beneficios clave</h2>
+                <p>Transforma tu negocio con ventajas competitivas</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Escalabilidad sin límites</h3>
+                    <p>Aumenta o reduce recursos según tus necesidades.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Alta disponibilidad</h3>
+                    <p>Garantizamos funcionamiento continuo de tus aplicaciones.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad avanzada</h3>
+                    <p>Protección de datos con cifrado de extremo a extremo.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Reducción de costos</h3>
+                    <p>Elimina inversiones en hardware hasta en un 60%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Soluciones Cloud. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .benefit-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
