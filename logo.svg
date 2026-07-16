@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF099" />
+      <stop offset="50%" stop-color="#F1A80A" />
+      <stop offset="100%" stop-color="#E05300" />
+    </linearGradient>
+    <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F6FF" />
+      <stop offset="100%" stop-color="#0066FF" />
+    </linearGradient>
+    <linearGradient id="glow-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F6FF" stop-opacity="0" />
+      <stop offset="50%" stop-color="#00F6FF" stop-opacity="1" />
+      <stop offset="100%" stop-color="#00F6FF" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="neon-glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="neon-glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Icon Section: Professional lightbulb with heart filament and tech elements -->
+  <g transform="translate(10, 10)">
+    <!-- Tech Outer Rings & Circuits -->
+    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#blue-gradient)" stroke-width="1.5" stroke-dasharray="15 8 5 8" filter="url(#neon-glow-blue)" opacity="0.8"/>
+    <circle cx="50" cy="50" r="38" fill="none" stroke="url(#blue-gradient)" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="2 4"/>
+
+    <!-- Circuit connection nodes -->
+    <circle cx="15" cy="30" r="3" fill="#00F6FF" filter="url(#neon-glow-blue)"/>
+    <line x1="15" y1="30" x2="28" y2="30" stroke="#00F6FF" stroke-width="1" opacity="0.7"/>
+
+    <circle cx="85" cy="70" r="3" fill="#00F6FF" filter="url(#neon-glow-blue)"/>
+    <line x1="85" y1="70" x2="72" y2="70" stroke="#00F6FF" stroke-width="1" opacity="0.7"/>
+
+    <circle cx="20" cy="70" r="2.5" fill="#F1A80A" filter="url(#neon-glow-gold)"/>
+    <line x1="20" y1="70" x2="30" y2="60" stroke="#F1A80A" stroke-width="1" opacity="0.6"/>
+
+    <!-- Lightbulb Base & Thread -->
+    <path d="M 42,72 L 58,72 M 44,76 L 56,76 M 46,80 L 54,80" stroke="url(#gold-gradient)" stroke-width="3" stroke-linecap="round" filter="url(#neon-glow-gold)"/>
+    <path d="M 48,84 L 52,84" stroke="url(#gold-gradient)" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Lightbulb Silhouette -->
+    <path d="M 36,52 C 36,36 64,36 64,52 C 64,62 56,64 56,70 L 44,70 C 44,64 36,62 36,52 Z"
+          fill="none" stroke="url(#gold-gradient)" stroke-width="3.5" stroke-linejoin="round" filter="url(#neon-glow-gold)"/>
+
+    <!-- Heart Filament (Glowing Gold) -->
+    <path d="M 50,62 C 50,62 45,57 45,53 C 45,50.5 47,48.5 49.5,48.5 C 50.8,48.5 51.8,49.2 52.3,50 C 52.8,49.2 53.8,48.5 55.1,48.5 C 57.6,48.5 59.6,50.5 59.6,53 C 59.6,57 54.6,62 54.6,62 Z"
+          transform="translate(-2.3, -3) scale(1.05)"
+          fill="none" stroke="url(#gold-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon-glow-gold)"/>
+
+    <!-- Rays -->
+    <line x1="50" y1="18" x2="50" y2="12" stroke="url(#gold-gradient)" stroke-width="2" stroke-linecap="round" filter="url(#neon-glow-gold)"/>
+    <line x1="26" y1="28" x2="21" y2="23" stroke="url(#gold-gradient)" stroke-width="2" stroke-linecap="round" filter="url(#neon-glow-gold)"/>
+    <line x1="74" y1="28" x2="79" y2="23" stroke="url(#gold-gradient)" stroke-width="2" stroke-linecap="round" filter="url(#neon-glow-gold)"/>
+    <line x1="18" y1="52" x2="12" y2="52" stroke="url(#gold-gradient)" stroke-width="2" stroke-linecap="round" filter="url(#neon-glow-gold)"/>
+    <line x1="82" y1="52" x2="88" y2="52" stroke="url(#gold-gradient)" stroke-width="2" stroke-linecap="round" filter="url(#neon-glow-gold)"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <g transform="translate(115, 0)">
+    <!-- Az InnovationX -->
+    <text x="0" y="62" font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-weight="800" font-size="44" fill="url(#gold-gradient)" letter-spacing="0.5">
+      Az <tspan fill="url(#gold-gradient)">InnovationX</tspan>
+    </text>
+
+    <!-- Glowing accent line under brand name -->
+    <rect x="0" y="78" width="350" height="2" fill="url(#glow-line)" />
+
+    <!-- Slogan: "DONDE LAS IDEAS COBRAN VIDA" -->
+    <text x="2" y="96" font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-weight="700" font-size="14.5" fill="#F1A80A" letter-spacing="4.5" opacity="0.95">
+      DONDE LAS IDEAS COBRAN VIDA
+    </text>
+  </g>
+</svg>

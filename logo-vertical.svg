@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient for beautiful contrast -->
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0E1726" />
+      <stop offset="100%" stop-color="#030712" />
+    </radialGradient>
+
+    <!-- Gradients -->
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE680" />
+      <stop offset="40%" stop-color="#F1A80A" />
+      <stop offset="100%" stop-color="#E05300" />
+    </linearGradient>
+
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F6FF" />
+      <stop offset="100%" stop-color="#0055FF" />
+    </linearGradient>
+
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0033aa" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#001155" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="glow-blue" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur1" />
+      <feGaussianBlur stdDeviation="12" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="glow-gold" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
+      <feGaussianBlur stdDeviation="10" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-grad)" rx="24" />
+
+  <!-- Circular network / orbit paths -->
+  <g opacity="0.25">
+    <circle cx="250" cy="210" r="150" fill="none" stroke="#00F6FF" stroke-width="1" stroke-dasharray="5 10"/>
+    <circle cx="250" cy="210" r="110" fill="none" stroke="#F1A80A" stroke-width="1" stroke-dasharray="3 6"/>
+  </g>
+
+  <!-- Central Technical & Creative composition -->
+  <g transform="translate(0, -10)">
+    <!-- Circuit lines & tech components in the background -->
+    <path d="M 120,210 L 190,210 L 220,250 M 380,210 L 310,210 L 280,250" fill="none" stroke="url(#blue-grad)" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="0" filter="url(#glow-blue)" opacity="0.8"/>
+    <path d="M 170,120 L 210,160 L 210,230 M 330,120 L 290,160 L 290,230" fill="none" stroke="url(#blue-grad)" stroke-width="2" filter="url(#glow-blue)" opacity="0.6"/>
+
+    <!-- Left side Orange/Gold Gear -->
+    <g transform="translate(140, 260) scale(0.9)" filter="url(#glow-gold)">
+      <circle cx="0" cy="0" r="18" fill="none" stroke="url(#gold-grad)" stroke-width="8" />
+      <path d="M -4,-28 L 4,-28 L 6,-18 L -6,-18 Z M -4,28 L 4,28 L 6,18 L -6,18 Z M -28,-4 L -28,4 L -18,6 L -18,-6 Z M 28,-4 L 28,4 L 18,6 L 18,-6 Z" fill="url(#gold-grad)" />
+      <path d="M -20,-20 L -14,-14 M 20,-20 L 14,-14 M -20,20 L -14,14 M 20,20 L 14,14" stroke="url(#gold-grad)" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="10" fill="#0E1726" />
+    </g>
+
+    <!-- Right side Blue Shield with lock -->
+    <g transform="translate(360, 220) scale(0.95)" filter="url(#glow-blue)">
+      <!-- Shield shape -->
+      <path d="M -25,-30 L 25,-30 C 25,-30 30,5 0,35 C -30,5 -25,-30 -25,-30 Z" fill="url(#shield-grad)" stroke="url(#blue-grad)" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Padlock in shield -->
+      <rect x="-10" y="-5" width="20" height="16" rx="3" fill="none" stroke="url(#blue-grad)" stroke-width="2.5" />
+      <path d="M -6,-5 L -6,-11 C -6,-15 6,-15 6,-11 L 6,-5" fill="none" stroke="url(#blue-grad)" stroke-width="2.5" />
+      <circle cx="0" cy="3" r="2.5" fill="url(#blue-grad)"/>
+    </g>
+
+    <!-- Central Glowing Shield-Tech Shape -->
+    <g transform="translate(250, 160) scale(1.1)" filter="url(#glow-blue)">
+      <path d="M -40,-45 L 40,-45 C 40,-45 48,10 0,55 C -48,10 -40,-45 -40,-45 Z" fill="url(#shield-grad)" stroke="url(#blue-grad)" stroke-width="3.5" stroke-linejoin="round"/>
+      <!-- Grid pattern overlay inside central shield -->
+      <path d="M -20,-25 L 20,-25 M -25,-10 L 25,-10 M -28,5 L 28,5 M -20,20 L 20,20" stroke="url(#blue-grad)" stroke-width="1" opacity="0.3"/>
+    </g>
+
+    <!-- Central Masterpiece: Professional Lightbulb with heart filament -->
+    <g transform="translate(250, 155) scale(1.15)" filter="url(#glow-gold)">
+      <!-- Rays/Glow points -->
+      <line x1="0" y1="-44" x2="0" y2="-52" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="-30" y1="-30" x2="-36" y2="-36" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="30" y1="-30" x2="36" y2="-36" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="-42" y1="0" x2="-50" y2="0" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="42" y1="0" x2="50" y2="0" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Bulb Silhouette -->
+      <path d="M -24,0 C -24,-18 24,-18 24,0 C 24,12 15,15 15,22 L -15,22 C -15,15 -24,12 -24,0 Z"
+            fill="#030712" fill-opacity="0.8" stroke="url(#gold-grad)" stroke-width="3" stroke-linejoin="round" />
+
+      <!-- Bulb Base / Threads -->
+      <path d="M -13,24 L 13,24 M -11,28 L 11,28 M -9,32 L 9,32" stroke="url(#gold-grad)" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M -6,36 L 6,36" stroke="url(#gold-grad)" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- Heart-shaped Elegant Filament -->
+      <path d="M 0,13 C 0,13 -7,7 -7,2 C -7,-1.5 -4.5,-4 -1.5,-4 C 0,-4 1.2,-3 1.8,-1.8 C 2.4,-3 3.6,-4 5.1,-4 C 8.1,-4 10.6,-1.5 10.6,2 C 10.6,7 3.6,13 3.6,13 Z"
+            transform="translate(-1.8, -3.5) scale(1.1)"
+            fill="none" stroke="url(#gold-grad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Professional Typography -->
+  <g transform="translate(250, 410)">
+    <!-- Brand Title: Az InnovationX -->
+    <text x="0" y="0" text-anchor="middle" font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-weight="900" font-size="38" fill="url(#gold-grad)" letter-spacing="1">
+      Az <tspan fill="url(#gold-grad)">InnovationX</tspan>
+    </text>
+
+    <!-- Glowing Divider line -->
+    <line x1="-150" y1="15" x2="150" y2="15" stroke="url(#blue-grad)" stroke-width="2" filter="url(#glow-blue)"/>
+    <circle cx="0" cy="15" r="4" fill="#00F6FF" filter="url(#glow-blue)" />
+
+    <!-- Slogan: DONDE LAS IDEAS COBRAN VIDA -->
+    <text x="0" y="38" text-anchor="middle" font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#FFE680" letter-spacing="5" opacity="0.95">
+      DONDE LAS IDEAS COBRAN VIDA
+    </text>
+  </g>
+</svg>
